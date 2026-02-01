@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Hey You 💕</title>
 
-  <!-- Cute Google Font -->
+  <!-- Cute fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      font-family: 'Quicksand', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Quicksand', sans-serif;
     }
 
     .card {
-      background: white;
-      padding: 40px;
-      border-radius: 25px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      background: #fff;
+      padding: 40px 35px;
+      border-radius: 28px;
       text-align: center;
-      max-width: 400px;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       animation: pop 0.6s ease;
+      position: relative;
     }
 
     @keyframes pop {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      from {
+        transform: scale(0.85);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     h1 {
       font-family: 'Pacifico', cursive;
       color: #ff4d6d;
-      font-size: 2.4em;
-      margin-bottom: 10px;
+      font-size: 2.5em;
+      margin-bottom: 8px;
     }
 
     p {
       font-size: 1.1em;
+      margin: 10px 0 25px;
+    }
+
+    h2 {
       margin-bottom: 25px;
     }
 
+    .buttons {
+      position: relative;
+      height: 80px;
+    }
+
     button {
-      padding: 14px 28px;
+      padding: 14px 30px;
       font-size: 16px;
-      margin: 10px;
-      border: none;
       border-radius: 30px;
+      border: none;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease;
     }
 
     .yes {
@@ -66,25 +81,33 @@
     }
 
     .no {
-      background: #f1f1f1;
+      background: #f2f2f2;
+      position: absolute;
+      right: 0;
     }
 
     #dateBox, #result {
       display: none;
-      margin-top: 25px;
+      margin-top: 30px;
+      animation: fade 0.4s ease;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     input[type="date"] {
       padding: 10px;
       font-size: 16px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1px solid #ddd;
     }
 
     img {
-      width: 240px;
+      width: 250px;
       margin-top: 20px;
-      border-radius: 15px;
+      border-radius: 16px;
     }
   </style>
 </head>
@@ -93,23 +116,25 @@
 
   <div class="card">
     <h1>Hey You 💕</h1>
-    <p>I was wondering something…</p>
+    <p>I’ve been meaning to ask you something…</p>
 
-    <h2>Will you go on a date with me? 🌸</h2>
+    <h2>Will you go on a date with me? 🌷</h2>
 
-    <button class="yes" onclick="showDate()">Yes 💖</button>
-    <button class="no" onclick="cuteNo()">Hmm 🙈</button>
+    <div class="buttons">
+      <button class="yes" onclick="showDate()">Yes 💖</button>
+      <button class="no" onmouseover="moveNo(this)">Hmm 🙈</button>
+    </div>
 
     <div id="dateBox">
       <p>Pick a day we’ll remember 💌</p>
-      <input type="date" id="date" />
+      <input type="date" id="date">
       <br><br>
       <button class="yes" onclick="confirmDate()">It’s a date ✨</button>
     </div>
 
     <div id="result">
-      <h2>Yayyy!! 🥰</h2>
-      <p>I’m already smiling thinking about it 💕</p>
+      <h2>Yayyyy!! 🥰</h2>
+      <p>I’m already excited 💕</p>
       <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
     </div>
   </div>
@@ -129,8 +154,10 @@
       document.getElementById("result").style.display = "block";
     }
 
-    function cuteNo() {
-      alert("Hehe… I’ll wait 😌💗");
+    function moveNo(btn) {
+      const x = Math.random() * 180 - 90;
+      const y = Math.random() * 40 - 20;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
     }
   </script>
 
