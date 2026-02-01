@@ -1,47 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hey GG💖</title>
+  <meta charset="UTF-8" />
+  <title>Hey You 💕</title>
+
+  <!-- Cute Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       text-align: center;
-      padding-top: 80px;
+      max-width: 400px;
+      animation: pop 0.6s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     h1 {
-      font-size: 2.5em;
+      font-family: 'Pacifico', cursive;
+      color: #ff4d6d;
+      font-size: 2.4em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 25px;
     }
 
     button {
-      padding: 15px 30px;
-      font-size: 18px;
-      margin: 15px;
+      padding: 14px 28px;
+      font-size: 16px;
+      margin: 10px;
       border: none;
-      border-radius: 10px;
+      border-radius: 30px;
       cursor: pointer;
+      transition: all 0.2s ease;
     }
 
     .yes {
-      background-color: #ff4d6d;
+      background: #ff4d6d;
       color: white;
+      box-shadow: 0 6px 15px rgba(255,77,109,0.4);
+    }
+
+    .yes:hover {
+      transform: scale(1.08);
     }
 
     .no {
-      background-color: #ccc;
-      position: relative;
+      background: #f1f1f1;
     }
 
     #dateBox, #result {
       display: none;
-      margin-top: 30px;
+      margin-top: 25px;
+    }
+
+    input[type="date"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
     }
 
     img {
-      width: 280px;
+      width: 240px;
       margin-top: 20px;
       border-radius: 15px;
     }
@@ -50,22 +91,27 @@
 
 <body>
 
-  <h1>Will you go on a dinner date with me? 💕</h1>
+  <div class="card">
+    <h1>Hey You 💕</h1>
+    <p>I was wondering something…</p>
 
-  <button class="yes" onclick="showDate()">Yes 😍</button>
-  <button class="no" onmouseover="moveNo()">No 🙃</button>
+    <h2>Will you go on a date with me? 🌸</h2>
 
-  <div id="dateBox">
-    <h2>Pick a date 💌</h2>
-    <input type="date" id="date">
-    <br><br>
-    <button class="yes" onclick="confirmDate()">Confirm 💖</button>
-  </div>
+    <button class="yes" onclick="showDate()">Yes 💖</button>
+    <button class="no" onclick="cuteNo()">Hmm 🙈</button>
 
-  <div id="result">
-    <h2>It’s a date! 🥰</h2>
-    <p>I can’t wait 💕</p>
-    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+    <div id="dateBox">
+      <p>Pick a day we’ll remember 💌</p>
+      <input type="date" id="date" />
+      <br><br>
+      <button class="yes" onclick="confirmDate()">It’s a date ✨</button>
+    </div>
+
+    <div id="result">
+      <h2>Yayyy!! 🥰</h2>
+      <p>I’m already smiling thinking about it 💕</p>
+      <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+    </div>
   </div>
 
   <script>
@@ -83,10 +129,8 @@
       document.getElementById("result").style.display = "block";
     }
 
-    function moveNo() {
-      const btn = document.querySelector('.no');
-      btn.style.left = Math.random() * 200 - 100 + "px";
-      btn.style.top = Math.random() * 200 - 100 + "px";
+    function cuteNo() {
+      alert("Hehe… I’ll wait 😌💗");
     }
   </script>
 
