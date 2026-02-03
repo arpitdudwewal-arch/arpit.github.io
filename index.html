@@ -79,14 +79,8 @@
     }
 
     @keyframes float {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-120vh) scale(1.5);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
     }
 
     img {
@@ -140,8 +134,7 @@
 
       // Grow YES button
       yesScale += 0.25;
-      document.getElementById("yesBtn").style.transform =
-        `scale(${yesScale})`;
+      document.getElementById("yesBtn").style.transform = `scale(${yesScale})`;
 
       // Shake NO button
       noBtn.classList.add("shake");
@@ -160,47 +153,4 @@
           flex-direction:column;
           justify-content:center;
           align-items:center;
-          text-align:center;
-          padding:40px;
-          color:#ff4f8b;
-        ">
-          <h1 style="font-family:'Pacifico', cursive; font-size:3.2em;">
-            It’s a YES 💖
-          </h1>
-
-          <img src="https://media.giphy.com/media/l0MYyDa8S9ghzNebm/giphy.gif" alt="Love Gif">
-
-          <div class="letter">
-            <p>
-              I just want you to know something simple and true —
-              you make the ordinary feel special, and every moment
-              feels a little warmer just knowing you exist.
-            </p>
-            <p>
-              This isn’t about big promises or perfect words,
-              just a genuine smile, shared laughs, and choosing
-              each other in the little moments.
-            </p>
-            <p>
-              Thank you for being my Valentine 💕
-            </p>
-          </div>
-        </div>
-      `;
-    }
-
-    // Floating hearts
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerText = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 15 + "px";
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 7000);
-    }, 500);
-  </script>
-
-</body>
-</html>
+          text-
