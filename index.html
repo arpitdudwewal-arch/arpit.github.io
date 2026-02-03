@@ -22,7 +22,7 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       padding: 45px 55px;
       border-radius: 30px;
       box-shadow: 0 20px 40px rgba(255, 79, 139, 0.25);
@@ -33,10 +33,6 @@
       font-family: 'Pacifico', cursive;
       font-size: 3em;
       margin-bottom: 25px;
-    }
-
-    .buttons {
-      margin-top: 20px;
     }
 
     button {
@@ -61,8 +57,17 @@
       color: white;
     }
 
-    button:hover {
-      transform: scale(1.08);
+    /* Nervous shake animation */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      50% { transform: translateX(4px); }
+      75% { transform: translateX(-4px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
     }
 
     /* Floating hearts */
@@ -85,10 +90,17 @@
     }
 
     img {
-      max-width: 280px;
+      max-width: 260px;
       border-radius: 25px;
-      margin-top: 25px;
+      margin: 25px 0;
       box-shadow: 0 15px 30px rgba(255, 79, 139, 0.4);
+    }
+
+    .letter {
+      max-width: 500px;
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-top: 15px;
     }
   </style>
 </head>
@@ -96,66 +108,88 @@
 
   <div class="card" id="card">
     <h1 id="message">Will you be my Valentine? 💖</h1>
-    <div class="buttons">
-      <button id="yesBtn" onclick="yesClicked()">Yes 💕</button>
-      <button id="noBtn" onclick="noClicked()">No 🙈</button>
-    </div>
+    <button id="yesBtn" onclick="yesClicked()">Yes 💕</button>
+    <button id="noBtn" onclick="noClicked()">No 🙈</button>
   </div>
+
+  <!-- Romantic music (hidden) -->
+  <audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e6d6a0f3c.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     const noMessages = [
-      "Are you suuure? 🥺",
-      "But I really like you 💕",
-      "You’re making my heart shy 😳",
-      "Pleaseee? 💖",
-      "I promise lots of love 🥰",
-      "My heart says yes for you 💓",
-      "Okay now I’m blushing 🥹"
+      "Hmm… interesting choice 🤔",
+      "Bold move 😌",
+      "I see how it is 👀",
+      "No pressure, just vibes ✨",
+      "Okay but imagine saying yes 😏",
+      "That button works… surprisingly 😄",
+      "Still thinking? Take your time 💭"
     ];
 
     let noCount = 0;
     let yesScale = 1;
 
     function noClicked() {
-      document.getElementById("message").innerText =
-        noMessages[noCount % noMessages.length];
+      const message = document.getElementById("message");
+      const noBtn = document.getElementById("noBtn");
+
+      message.innerText = noMessages[noCount % noMessages.length];
       noCount++;
+
+      // Grow YES button
       yesScale += 0.25;
       document.getElementById("yesBtn").style.transform =
         `scale(${yesScale})`;
+
+      // Shake NO button
+      noBtn.classList.add("shake");
+      setTimeout(() => noBtn.classList.remove("shake"), 400);
     }
 
     function yesClicked() {
+      // Play music
+      document.getElementById("music").play();
+
       document.body.innerHTML = `
         <div style="
-          height:100vh;
+          min-height:100vh;
           background:linear-gradient(135deg, #ffb6d5, #ffe3f0);
           display:flex;
           flex-direction:column;
           justify-content:center;
           align-items:center;
           text-align:center;
-          font-family:'Pacifico', cursive;
+          padding:40px;
           color:#ff4f8b;
         ">
-          <h1 style="font-size:3.2em;">
-            YAYYY 💖💖💖
+          <h1 style="font-family:'Pacifico', cursive; font-size:3.2em;">
+            It’s a YES 💖
           </h1>
 
-          <img src="https://media.giphy.com/media/l0MYyDa8S9ghzNebm/giphy.gif" alt="Cute Love Gif">
+          <img src="https://media.giphy.com/media/l0MYyDa8S9ghzNebm/giphy.gif" alt="Love Gif">
 
-          <h2 style="
-            font-family:'Quicksand', sans-serif;
-            margin-top:20px;
-          ">
-            You just made my heart so happy 🥰<br>
-            Happy Valentine’s Day 🌹
-          </h2>
+          <div class="letter">
+            <p>
+              I just want you to know something simple and true —
+              you make the ordinary feel special, and every moment
+              feels a little warmer just knowing you exist.
+            </p>
+            <p>
+              This isn’t about big promises or perfect words,
+              just a genuine smile, shared laughs, and choosing
+              each other in the little moments.
+            </p>
+            <p>
+              Thank you for being my Valentine 💕
+            </p>
+          </div>
         </div>
       `;
     }
 
-    // Floating hearts generator
+    // Floating hearts
     setInterval(() => {
       const heart = document.createElement("div");
       heart.classList.add("heart");
