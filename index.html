@@ -1,165 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hey You 💕</title>
-
-  <!-- Cute fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <title>Will You Be My Valentine? 💘</title>
   <style>
     body {
-      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       height: 100vh;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    .card {
-      background: #fff;
-      padding: 40px 35px;
-      border-radius: 28px;
+      align-items: center;
       text-align: center;
-      max-width: 420px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      animation: pop 0.6s ease;
-      position: relative;
+      color: #fff;
     }
 
-    @keyframes pop {
-      from {
-        transform: scale(0.85);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+    .container {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 40px;
+      border-radius: 20px;
     }
 
     h1 {
-      font-family: 'Pacifico', cursive;
-      color: #ff4d6d;
       font-size: 2.5em;
-      margin-bottom: 8px;
-    }
-
-    p {
-      font-size: 1.1em;
-      margin: 10px 0 25px;
-    }
-
-    h2 {
-      margin-bottom: 25px;
-    }
-
-    .buttons {
-      position: relative;
-      height: 80px;
+      margin-bottom: 30px;
     }
 
     button {
-      padding: 14px 30px;
-      font-size: 16px;
-      border-radius: 30px;
+      padding: 15px 30px;
+      font-size: 1.2em;
       border: none;
+      border-radius: 30px;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      margin: 10px;
+      transition: all 0.3s ease;
     }
 
-    .yes {
-      background: #ff4d6d;
+    #yesBtn {
+      background-color: #ff4d6d;
       color: white;
-      box-shadow: 0 6px 15px rgba(255,77,109,0.4);
     }
 
-    .yes:hover {
-      transform: scale(1.08);
-    }
-
-    .no {
-      background: #f2f2f2;
-      position: absolute;
-      right: 0;
-    }
-
-    #dateBox, #result {
-      display: none;
-      margin-top: 30px;
-      animation: fade 0.4s ease;
-    }
-
-    @keyframes fade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    input[type="date"] {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 12px;
-      border: 1px solid #ddd;
-    }
-
-    img {
-      width: 250px;
-      margin-top: 20px;
-      border-radius: 16px;
+    #noBtn {
+      background-color: #555;
+      color: white;
     }
   </style>
 </head>
-
 <body>
-
-  <div class="card">
-    <h1>Hey You 💕</h1>
-    <p>I’ve been meaning to ask you something…</p>
-
-    <h2>Will you go on a dinner date with me?🌻</h2>
-
-    <div class="buttons">
-      <button class="yes" onclick="showDate()">Yes 💖</button>
-      <button class="no" onmouseover="moveNo(this)">Hmm 🙈</button>
-    </div>
-
-    <div id="dateBox">
-      <p>Pick a day we’ll remember 💌</p>
-      <input type="date" id="date">
-      <br><br>
-      <button class="yes" onclick="confirmDate()">It’s a date ✨</button>
-    </div>
-
-    <div id="result">
-      <h2>Yayyyy!! 🥰</h2>
-      <p>I’m already excited 💕</p>
-      <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
-    </div>
+  <div class="container">
+    <h1 id="message">Will you be my Valentine? 💖</h1>
+    <button id="yesBtn" onclick="yesClicked()">Yes 💕</button>
+    <button id="noBtn" onclick="noClicked()">No 😢</button>
   </div>
 
   <script>
-    function showDate() {
-      document.getElementById("dateBox").style.display = "block";
+    const noMessages = [
+      "Are you sure? 😟",
+      "Really sure?? 🥺",
+      "Think again… 💔",
+      "You’re breaking my heart 😭",
+      "Last chance 😭💘",
+      "Ok this is getting painful 😭😭"
+    ];
+
+    let noCount = 0;
+    let yesSize = 1;
+
+    function noClicked() {
+      const message = document.getElementById("message");
+      message.innerText = noMessages[noCount % noMessages.length];
+      noCount++;
+
+      const yesBtn = document.getElementById("yesBtn");
+      yesSize += 0.2;
+      yesBtn.style.transform = `scale(${yesSize})`;
     }
 
-    function confirmDate() {
-      const date = document.getElementById("date").value;
-      if (!date) {
-        alert("Choose a date first 💖");
-        return;
-      }
-      document.getElementById("dateBox").style.display = "none";
-      document.getElementById("result").style.display = "block";
-    }
-
-    function moveNo(btn) {
-      const x = Math.random() * 180 - 90;
-      const y = Math.random() * 40 - 20;
-      btn.style.transform = `translate(${x}px, ${y}px)`;
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          height:100vh;
+          font-family:'Comic Sans MS', cursive;
+          background:linear-gradient(135deg, #ff4d6d, #ff758f);
+          color:white;
+          text-align:center;
+        ">
+          <h1>
+            YAY!!! 💖💖💖<br><br>
+            I knew you’d say YES 😍<br>
+            Happy Valentine’s Day! 🌹
+          </h1>
+        </div>
+      `;
     }
   </script>
-
 </body>
 </html>
