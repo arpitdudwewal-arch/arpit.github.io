@@ -1,156 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Will You Be My Valentine? 💕</title>
+<meta charset="UTF-8">
+<title>Valentine Surprise 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0; height:100vh;
+  display:flex; justify-content:center; align-items:center;
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
+  font-family: 'Quicksand', sans-serif; text-align:center; color:#ff4f8b;
+  overflow:hidden;
+}
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+.card {
+  background: rgba(255,255,255,0.9); padding:45px 55px;
+  border-radius:30px; box-shadow:0 20px 40px rgba(255,79,139,0.25);
+  z-index:2;
+}
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Quicksand', sans-serif;
-      overflow: hidden;
-      color: #ff4f8b;
-      text-align: center;
-    }
+h1 { font-family:'Pacifico', cursive; font-size:3em; margin-bottom:25px; }
 
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 45px 55px;
-      border-radius: 30px;
-      box-shadow: 0 20px 40px rgba(255, 79, 139, 0.25);
-      z-index: 2;
-    }
+button {
+  padding:15px 35px; font-size:1.2em; border:none; border-radius:40px;
+  margin:10px; cursor:pointer; transition: all 0.3s ease; font-family:'Quicksand',sans-serif;
+}
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 3em;
-      margin-bottom: 25px;
-    }
+#yesBtn { background:#ff77a9; color:white; box-shadow:0 10px 20px rgba(255,119,169,0.4);}
+#noBtn { background:#f3a6c8; color:white; }
 
-    button {
-      padding: 15px 35px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 40px;
-      cursor: pointer;
-      margin: 10px;
-      transition: all 0.3s ease;
-      font-family: 'Quicksand', sans-serif;
-    }
+@keyframes shake {0%{transform:translateX(0);}25%{transform:translateX(-4px);}50%{transform:translateX(4px);}75%{transform:translateX(-4px);}100%{transform:translateX(0);}}
+.shake { animation:shake 0.4s; }
 
-    #yesBtn {
-      background: #ff77a9;
-      color: white;
-      box-shadow: 0 10px 20px rgba(255, 119, 169, 0.4);
-    }
+.heart { position:absolute; bottom:-20px; animation:float 7s linear infinite; opacity:0.8;}
+@keyframes float {0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-120vh) scale(1.5);opacity:0;}}
 
-    #noBtn {
-      background: #f3a6c8;
-      color: white;
-    }
-
-    /* Nervous shake animation */
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-4px); }
-      50% { transform: translateX(4px); }
-      75% { transform: translateX(-4px); }
-      100% { transform: translateX(0); }
-    }
-
-    .shake {
-      animation: shake 0.4s;
-    }
-
-    /* Floating hearts */
-    .heart {
-      position: absolute;
-      bottom: -20px;
-      animation: float 7s linear infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
-    }
-
-    img {
-      max-width: 260px;
-      border-radius: 25px;
-      margin: 25px 0;
-      box-shadow: 0 15px 30px rgba(255, 79, 139, 0.4);
-    }
-
-    .letter {
-      max-width: 500px;
-      font-size: 1.1em;
-      line-height: 1.6;
-      margin-top: 15px;
-    }
-  </style>
+img { max-width:260px; border-radius:25px; margin:25px 0; box-shadow:0 15px 30px rgba(255,79,139,0.4);}
+.letter { max-width:500px; font-size:1.1em; line-height:1.6; margin-top:15px; }
+</style>
 </head>
 <body>
 
-  <div class="card" id="card">
-    <h1 id="message">Will you be my Valentine? 💖</h1>
-    <button id="yesBtn" onclick="yesClicked()">Yes 💕</button>
-    <button id="noBtn" onclick="noClicked()">No 🙈</button>
-  </div>
+<div class="card" id="card">
+  <h1 id="message">Will you be my Valentine? 💖</h1>
+  <button id="yesBtn">Yes 💕</button>
+  <button id="noBtn">No 🙈</button>
+</div>
 
-  <!-- Romantic music (hidden) -->
-  <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e6d6a0f3c.mp3" type="audio/mpeg">
-  </audio>
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e6d6a0f3c.mp3" type="audio/mpeg">
+</audio>
 
-  <script>
-    const noMessages = [
-      "Hmm… interesting choice 🤔",
-      "Bold move 😌",
-      "I see how it is 👀",
-      "No pressure, just vibes ✨",
-      "Okay but imagine saying yes 😏",
-      "That button works… surprisingly 😄",
-      "Still thinking? Take your time 💭"
-    ];
+<script>
+const noMessages = [
+  "Hmm… interesting choice 🤔",
+  "Bold move 😌",
+  "I see how it is 👀",
+  "No pressure, just vibes ✨",
+  "Okay but imagine saying yes 😏",
+  "That button works… surprisingly 😄",
+  "Still thinking? Take your time 💭"
+];
 
-    let noCount = 0;
-    let yesScale = 1;
+let noCount=0; let yesScale=1;
 
-    function noClicked() {
-      const message = document.getElementById("message");
-      const noBtn = document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const noBtn=document.getElementById("noBtn");
+const message=document.getElementById("message");
+const music=document.getElementById("music");
 
-      message.innerText = noMessages[noCount % noMessages.length];
-      noCount++;
+noBtn.addEventListener("click",()=>{
+  message.innerText=noMessages[noCount%noMessages.length];
+  noCount++;
+  yesScale+=0.25; yesBtn.style.transform=`scale(${yesScale})`;
+  noBtn.classList.add("shake");
+  setTimeout(()=>noBtn.classList.remove("shake"),400);
+});
 
-      // Grow YES button
-      yesScale += 0.25;
-      document.getElementById("yesBtn").style.transform = `scale(${yesScale})`;
+yesBtn.addEventListener("click",()=>{
+  music.play();
+  document.body.innerHTML=`
+    <div style="min-height:100vh; background:linear-gradient(135deg, #ffb6d5, #ffe3f0); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px; color:#ff4f8b;">
+      <h1 style="font-family:'Pacifico', cursive; font-size:3.2em;">It’s a YES 💖</h1>
+      <img src="https://media.giphy.com/media/l0MYyDa8S9ghzNebm/giphy.gif" alt="Cute Love Gif">
+      <div class="letter">
+        <p>I just want to say something simple — You’ve been there for me whenever I felt low, and I know it hasn’t always been easy. We’ve had our moments, we’ve fought, and yet we always found our way back to being friends. Through all of that, what started to matter most to me was <strong>you</strong> — how you’re doing, how you’re feeling, and whether you’re okay.</p>
+        <p>I know neither of us is in a place to fall in love right now, and that’s completely okay. This isn’t about labels or rushing anything. It’s about being honest, showing I care, and being there for each other in the small ways that mean the most.</p>
+        <p>I don’t want this to affect our friendship at all. I truly value what we have, and the only thing I can promise is to always try to be emotionally present — to listen, to understand, and to never be the reason you feel worse on a hard day.</p>
+        <p>And I know you don’t really do dates… but maybe we could start small — a cozy dinner sometime, no expectations, and if it ever feels right, maybe even a little Goa trip someday. Just a gentle thought, one that makes me smile 💕</p>
+      </div>
+    </div>
+  `;
+});
 
-      // Shake NO button
-      noBtn.classList.add("shake");
-      setTimeout(() => noBtn.classList.remove("shake"), 400);
-    }
-
-    function yesClicked() {
-      // Play music
-      document.getElementById("music").play();
-
-      document.body.innerHTML = `
-        <div style="
-          min-height:100vh;
-          background:linear-gradient(135deg, #ffb6d5, #ffe3f0);
-          display:flex;
-          flex-direction:column;
-          justify-content:center;
-          align-items:center;
-          text-
+// Floating hearts
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=Math.random()*20+15+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),7000);
+},500);
+</script>
+</body>
+</html>
