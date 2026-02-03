@@ -2,113 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Will You Be My Valentine? 💖</title>
+  <title>Will You Be My Valentine? 💕</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       height: 100vh;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff758f, #ff7eb3);
-      overflow: hidden;
+      background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      font-family: 'Quicksand', sans-serif;
+      overflow: hidden;
+      color: #ff4f8b;
       text-align: center;
     }
 
-    .container {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      padding: 40px 50px;
-      border-radius: 25px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 45px 55px;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(255, 79, 139, 0.25);
       z-index: 2;
     }
 
     h1 {
       font-family: 'Pacifico', cursive;
       font-size: 3em;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      margin-top: 20px;
     }
 
     button {
-      border: none;
       padding: 15px 35px;
       font-size: 1.2em;
+      border: none;
       border-radius: 40px;
       cursor: pointer;
       margin: 10px;
       transition: all 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
     }
 
     #yesBtn {
-      background: #ff3366;
+      background: #ff77a9;
       color: white;
+      box-shadow: 0 10px 20px rgba(255, 119, 169, 0.4);
     }
 
     #noBtn {
-      background: #555;
+      background: #f3a6c8;
       color: white;
     }
 
     button:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
 
     /* Floating hearts */
     .heart {
       position: absolute;
       bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.7;
+      animation: float 7s linear infinite;
+      opacity: 0.8;
     }
 
-    @keyframes floatUp {
+    @keyframes float {
       0% {
-        transform: translateY(0) translateX(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
       }
       100% {
-        transform: translateY(-120vh) translateX(50px);
+        transform: translateY(-120vh) scale(1.5);
         opacity: 0;
       }
     }
 
     img {
-      max-width: 300px;
-      margin-top: 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      max-width: 280px;
+      border-radius: 25px;
+      margin-top: 25px;
+      box-shadow: 0 15px 30px rgba(255, 79, 139, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <div class="container" id="main">
+  <div class="card" id="card">
     <h1 id="message">Will you be my Valentine? 💖</h1>
-    <button id="yesBtn" onclick="yesClicked()">Yes 💕</button>
-    <button id="noBtn" onclick="noClicked()">No 😢</button>
+    <div class="buttons">
+      <button id="yesBtn" onclick="yesClicked()">Yes 💕</button>
+      <button id="noBtn" onclick="noClicked()">No 🙈</button>
+    </div>
   </div>
 
   <script>
     const noMessages = [
-      "Are you sure? 🥺",
-      "Think again… 💔",
-      "You’re breaking my heart 😭",
-      "Come onnn 😢",
-      "I’ll be very sad 💔",
-      "Okay now this hurts 😭😭",
-      "Last chance 😭💘"
+      "Are you suuure? 🥺",
+      "But I really like you 💕",
+      "You’re making my heart shy 😳",
+      "Pleaseee? 💖",
+      "I promise lots of love 🥰",
+      "My heart says yes for you 💓",
+      "Okay now I’m blushing 🥹"
     ];
 
     let noCount = 0;
@@ -117,10 +119,8 @@
     function noClicked() {
       document.getElementById("message").innerText =
         noMessages[noCount % noMessages.length];
-
       noCount++;
       yesScale += 0.25;
-
       document.getElementById("yesBtn").style.transform =
         `scale(${yesScale})`;
     }
@@ -128,43 +128,44 @@
     function yesClicked() {
       document.body.innerHTML = `
         <div style="
+          height:100vh;
+          background:linear-gradient(135deg, #ffb6d5, #ffe3f0);
           display:flex;
           flex-direction:column;
           justify-content:center;
           align-items:center;
-          height:100vh;
-          background:linear-gradient(135deg, #ff3366, #ff758f);
-          color:white;
           text-align:center;
           font-family:'Pacifico', cursive;
+          color:#ff4f8b;
         ">
-          <h1 style="font-size:3em;">
-            YAYYYYY!!! 💖💖💖
+          <h1 style="font-size:3.2em;">
+            YAYYY 💖💖💖
           </h1>
 
-          <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif" alt="Happy Gif">
+          <img src="https://media.giphy.com/media/l0MYyDa8S9ghzNebm/giphy.gif" alt="Cute Love Gif">
 
-          <h2 style="font-family:'Poppins', sans-serif; margin-top:20px;">
-            Happy Valentine’s Day 🌹<br>
-            I knew you’d say YES 😍
+          <h2 style="
+            font-family:'Quicksand', sans-serif;
+            margin-top:20px;
+          ">
+            You just made my heart so happy 🥰<br>
+            Happy Valentine’s Day 🌹
           </h2>
         </div>
       `;
     }
 
-    // Generate floating hearts
+    // Floating hearts generator
     setInterval(() => {
       const heart = document.createElement("div");
       heart.classList.add("heart");
-      heart.innerText = "💗";
+      heart.innerText = "💖";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = Math.random() * 20 + 15 + "px";
       document.body.appendChild(heart);
 
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
-    }, 400);
+      setTimeout(() => heart.remove(), 7000);
+    }, 500);
   </script>
 
 </body>
