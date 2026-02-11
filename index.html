@@ -11,43 +11,47 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #ff6a88, #ff99ac);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
     color: #fff;
     overflow-x: hidden;
     text-align: center;
-    flex-direction: column;
 }
 
-.intro, .container {
+/* Intro message */
+.intro {
     width: 90%;
     max-width: 500px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
     border-radius: 25px;
     padding: 25px 20px;
-    margin: 15px auto;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    animation: fadeIn 1.5s ease;
+    margin: 20px auto 10px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 1s ease;
+}
+
+h1 { font-size: 28px; margin-bottom: 12px; }
+p { font-size: 17px; line-height: 1.5; margin: 8px 0; }
+
+/* Container for buttons and reveal */
+.container {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 25px 20px;
+    margin: 15px auto 30px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     text-align: center;
 }
 
-h1 {
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-p {
-    font-size: 17px;
-    line-height: 1.5;
-    margin: 10px 0;
-}
-
 .buttons {
-    margin-top: 25px;
+    margin-top: 15px;
     position: relative;
     height: 60px;
 }
@@ -64,51 +68,34 @@ button {
     user-select: none;
 }
 
-#yesBtn, #noBtn {
-  animation: bounceIdle 3s ease-in-out infinite;
-}
-
-#yesBtn {
-    background: #ff4e91;
-    color: white;
-}
-
-#yesBtn:hover {
-    animation: none;
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 0 15px #ff77a9, 0 0 25px #ff77a9;
-}
+#yesBtn { background: #ff4e91; color: #fff; }
+#yesBtn:hover { transform: scale(1.1); box-shadow: 0 0 15px #ff77a9, 0 0 25px #ff77a9; }
 
 #noBtn {
-    background: #ffffff;
-    color: #ff4e91;
-    position: absolute;
-    top: 0;
-    left: 120px;
+    background: #fff; color: #ff4e91;
+    position: absolute; top: 0; left: 120px;
 }
 
 #reveal {
     margin-top: 20px;
+    display: none; /* hidden by default */
 }
 
 #reveal img {
     width: 100%;
     border-radius: 20px;
-    margin-top: 20px;
+    margin-bottom: 15px;
     animation: zoomIn 1s ease;
     max-height: 300px;
     object-fit: cover;
 }
 
 #note {
-    margin-top: 15px;
     font-size: 17px;
-    white-space: pre-line;
+    line-height: 1.5;
     text-align: left;
-}
-
-.hidden {
-    display: none;
+    color: #fff;
+    white-space: pre-line;
 }
 
 .floatElement {
@@ -121,35 +108,13 @@ button {
     z-index: 0;
 }
 
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1; transform: translateY(0);}
-}
+/* Animations */
+@keyframes fadeIn { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+@keyframes zoomIn { from {transform: scale(0.5); opacity:0;} to {transform: scale(1); opacity:1;} }
+@keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+@keyframes shake { 0%,100% { transform: translateX(0);} 20%,60% { transform: translateX(-8px);} 40%,80% { transform: translateX(8px);} }
 
-@keyframes zoomIn {
-    from {transform: scale(0.5); opacity:0;}
-    to {transform: scale(1); opacity:1;}
-}
-
-@keyframes floatUp {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
-
-@keyframes bounceIdle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-8px); }
-    40%, 80% { transform: translateX(8px); }
-}
-
-/* Responsive adjustments */
 @media (max-width: 600px) {
-    .buttons { height: auto; }
     #noBtn { position: relative; top: auto; left: auto; display: inline-block; }
     #yesBtn, #noBtn { display: inline-block; margin: 8px; }
     #note { font-size: 16px; }
@@ -163,15 +128,15 @@ button {
     <source src="Music.mp3" type="audio/mp3">
 </audio>
 
-<!-- Always visible intro message -->
-<div class="intro">
+<!-- Intro message -->
+<div class="intro" id="introMsg">
     <h1>🌸 Hey GG 🌸</h1>
     <p>This Valentine… I just want you to know something.</p>
     <p>You are NEVER alone. Not today. Not ever.</p>
     <p>Because I’ll always be right here with you 🌻</p>
 </div>
 
-<!-- Container with buttons and hidden reveal -->
+<!-- Container with buttons -->
 <div class="container">
     <div class="buttons">
         <p><b>Promise you'll always remember that?</b></p>
@@ -179,7 +144,8 @@ button {
         <button id="noBtn">Not an option 🙈</button>
     </div>
 
-    <div id="reveal" class="hidden">
+    <!-- Reveal content -->
+    <div id="reveal">
         <img src="WhatsApp%20Image%202026-02-11%20at%2010.52.52%20PM.jpeg" alt="Our Photo">
         <p id="note">
 GG… 🤍
@@ -217,7 +183,7 @@ but I hope you’ll know I’m still here, quietly rooting for you, ready whenev
 And GG… please take a break from life sometime.  
 One day, when things calm down, let’s escape on a vacay 🌊☀️  
 No pressure, no labels — just a few days of peace, laughter, and memories.  
-I have a feeling it could become one of our most unforgettable trips.
+It might just become one of our most unforgettable trips.
 
 You're not alone. You never will be. 💕
         </p>
@@ -229,57 +195,52 @@ const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const reveal = document.getElementById("reveal");
 const bgMusic = document.getElementById("bgMusic");
+const introMsg = document.getElementById("introMsg");
 const container = document.querySelector(".container");
 
 let noHoverCount = 0;
 
+// Make "No" button move
 noBtn.addEventListener("mouseover", () => {
-  noHoverCount++;
-  noBtn.style.animation = "shake 0.3s";
-  setTimeout(() => {
-    noBtn.style.animation = "";
-    const containerRect = container.getBoundingClientRect();
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
-
-    const maxX = containerRect.width - btnWidth - 20;
-    const maxY = containerRect.height - btnHeight - 20;
-
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-
-    noBtn.style.position = "absolute";
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-
-    if (noHoverCount === 7) {
-      alert("Come on, say Yes! It's the best promise ever! 💖");
-    }
-    if (noHoverCount > 10) noHoverCount = 0;
-  }, 300);
+    noHoverCount++;
+    noBtn.style.animation = "shake 0.3s";
+    setTimeout(() => {
+        noBtn.style.animation = "";
+        const containerRect = container.getBoundingClientRect();
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+        const maxX = containerRect.width - btnWidth - 20;
+        const maxY = containerRect.height - btnHeight - 20;
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+        noBtn.style.position = "absolute";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+        if (noHoverCount === 7) alert("Come on, say Yes! 💖");
+        if (noHoverCount > 10) noHoverCount = 0;
+    }, 300);
 });
 
+// Show reveal content and hide intro
 yesBtn.addEventListener("click", () => {
-  reveal.classList.remove("hidden");
-  document.querySelector(".buttons").style.display = "none";
-  bgMusic.play().catch(e => console.log("Audio play failed:", e));
+    introMsg.style.display = "none";  // Hide intro message
+    reveal.style.display = "block";
+    document.querySelector(".buttons").style.display = "none";
+    bgMusic.play().catch(e => console.log("Audio play failed:", e));
 });
 
-/* Floating hearts + sunflowers */
+// Floating hearts and sunflowers
 setInterval(() => {
-  const element = document.createElement("div");
-  element.classList.add("floatElement");
-
-  const emojis = ["💖", "🌻"];
-  element.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-
-  element.style.left = Math.random() * 100 + "vw";
-  element.style.fontSize = (Math.random() * 20 + 20) + "px";
-
-  document.body.appendChild(element);
-  setTimeout(() => element.remove(), 7000);
+    const element = document.createElement("div");
+    element.classList.add("floatElement");
+    const emojis = ["💖","🌻"];
+    element.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+    element.style.left = Math.random()*100 + "vw";
+    element.style.fontSize = (Math.random()*20+20) + "px";
+    document.body.appendChild(element);
+    setTimeout(() => element.remove(), 7000);
 }, 500);
-</script>
 
+</script>
 </body>
 </html>
