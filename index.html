@@ -94,18 +94,16 @@ button {
     to {transform: scale(1); opacity:1;}
 }
 
-/* Floating hearts */
-.heart {
+.floatElement {
     position: absolute;
     bottom: -20px;
-    font-size: 20px;
-    animation: floatUp 6s linear infinite;
-    opacity: 0.7;
+    animation: floatUp 7s linear infinite;
+    opacity: 0.9;
 }
 
 @keyframes floatUp {
-    0% {transform: translateY(0); opacity: 0.7;}
-    100% {transform: translateY(-100vh); opacity: 0;}
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }
 </style>
 </head>
@@ -132,13 +130,45 @@ button {
     <div id="reveal" class="hidden">
         <img src="WhatsApp Image 2026-02-11 at 10.52.52 PM.jpeg" alt="Our Photo">
         <p id="note">
+            GG… 🤍<br><br>
             No matter what life throws at you,  
             I promise to stand beside you —  
             to support you, laugh with you, protect your smile,  
             and remind you how special you are.  
             <br><br>
-            You're not alone. You never will be. 💕
-        </p>
+
+I’m not sure about you, but in my heart I truly feel like I share something special with you — a bond that isn’t loud, but real.<br><br>
+
+We’ve had our ups and downs, moments of distance, and yet somehow… we always found our way back.<br><br>
+
+You were there for me when I was at my lowest.  
+And I, like a foolish person, let my mood dictate my actions and created distance.  
+You got irritated, but you still handled it quietly, and I see that now. I’m truly grateful for you.<br><br>
+
+I wanted to say something honestly — but gently.<br><br>
+
+Our friendship means a lot to me.  
+We work together, we share space, and I would never want to make that uncomfortable or awkward.  
+At the same time, I care about you deeply as a friend, and I hope you always know you don’t have to face life’s struggles alone.<br><br>
+
+Life hasn’t been easy for you lately, and I notice the weight you carry silently.  
+I may not always have the perfect words, but I will always be here — ready to listen, support, or just sit beside you in silence when you need it.<br><br>
+
+I value you more than I probably show sometimes.  
+I like you a lot — as a friend, sincerely and truly.  
+I would never want to hurt, pressure, or complicate what we have.  
+Our friendship matters too much to me.<br><br>
+
+There might be days when I go quiet or seem distant,  
+but I hope you’ll know I’m still here, quietly rooting for you, ready whenever you need me.<br><br>
+
+And GG… please take a break from life sometime.  
+One day, when things calm down, let’s escape on a vaccay 🌊☀️  
+No pressure, no labels — just a few days of peace, laughter, and memories.  
+I have a feeling it could become one of our most unforgettable trips.<br><br>
+
+You're not alone. You never will be. 💕
+</p>
     </div>
 </div>
 
@@ -159,18 +189,25 @@ yesBtn.addEventListener("click", () => {
     document.querySelector(".buttons").style.display = "none";
 });
     
-/* Floating hearts generator */
+/* Floating hearts + sunflowers */
 setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-    document.body.appendChild(heart);
+    const element = document.createElement("div");
+    element.classList.add("floatElement");
+
+    const emojis = ["💖", "🌻"];
+    element.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+    element.style.left = Math.random() * 100 + "vw";
+    element.style.fontSize = (Math.random() * 20 + 20) + "px";
+
+    document.body.appendChild(element);
+
     setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}, 400);
+        element.remove();
+    }, 7000);
+
+}, 500);
+
 </script>
 
 </body>
