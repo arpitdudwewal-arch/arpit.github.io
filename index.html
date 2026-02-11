@@ -1,108 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Valentine Surprise 💖</title>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-<style>
-body {
-  margin:0; height:100vh;
-  display:flex; justify-content:center; align-items:center;
-  background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
-  font-family: 'Quicksand', sans-serif; text-align:center; color:#ff4f8b;
-  overflow:hidden;
-}
-
-.card {
-  background: rgba(255,255,255,0.9); padding:45px 55px;
-  border-radius:30px; box-shadow:0 20px 40px rgba(255,79,139,0.25);
-  z-index:2;
-}
-
-h1 { font-family:'Pacifico', cursive; font-size:3em; margin-bottom:25px; }
-
-button {
-  padding:15px 35px; font-size:1.2em; border:none; border-radius:40px;
-  margin:10px; cursor:pointer; transition: all 0.3s ease; font-family:'Quicksand',sans-serif;
-}
-
-#yesBtn { background:#ff77a9; color:white; box-shadow:0 10px 20px rgba(255,119,169,0.4);}
-#noBtn { background:#f3a6c8; color:white; }
-
-@keyframes shake {0%{transform:translateX(0);}25%{transform:translateX(-4px);}50%{transform:translateX(4px);}75%{transform:translateX(-4px);}100%{transform:translateX(0);}}
-.shake { animation:shake 0.4s; }
-
-.heart { position:absolute; bottom:-20px; animation:float 7s linear infinite; opacity:0.8;}
-@keyframes float {0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-120vh) scale(1.5);opacity:0;}}
-
-img { max-width:260px; border-radius:25px; margin:25px 0; box-shadow:0 15px 30px rgba(255,79,139,0.4);}
-.letter { max-width:500px; font-size:1.1em; line-height:1.6; margin-top:15px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Not Alone 💖</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>🌸 Hey Beautiful Friend 🌸</h1>
+        <p>I just want you to know that you are *never alone.*</p>
+        <p>Your friend (me 💛) is always here with you — through ups and downs, laughs and chaos. 😊</p>
+        
+        <!-- Music Embed -->
+        <div class="music">
+            <iframe width="300" height="170" 
+                src="https://www.youtube.com/embed/CbvjhmFVMvA?autoplay=1&loop=1&playlist=CbvjhmFVMvA"
+                title="AP Dhillon"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="question-box">
+            <p>So… promise you’ll always remember someone’s got your back?</p>
+            <button id="yesBtn">YES 😄</button>
+            <button id="noBtn">NO 😐</button>
+        </div>
 
-<div class="card" id="card">
-  <h1 id="message">Will you be my Valentine? 💖</h1>
-  <button id="yesBtn">Yes 💕</button>
-  <button id="noBtn">No 🙈</button>
-</div>
-
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e6d6a0f3c.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const noMessages = [
-  "Hmm… interesting choice 🤔",
-  "Bold move 😌",
-  "I see how it is 👀",
-  "No pressure, just vibes ✨",
-  "Okay but imagine saying yes 😏",
-  "That button works… surprisingly 😄",
-  "Still thinking? Take your time 💭"
-];
-
-let noCount=0; let yesScale=1;
-
-const yesBtn=document.getElementById("yesBtn");
-const noBtn=document.getElementById("noBtn");
-const message=document.getElementById("message");
-const music=document.getElementById("music");
-
-noBtn.addEventListener("click",()=>{
-  message.innerText=noMessages[noCount%noMessages.length];
-  noCount++;
-  yesScale+=0.25; yesBtn.style.transform=`scale(${yesScale})`;
-  noBtn.classList.add("shake");
-  setTimeout(()=>noBtn.classList.remove("shake"),400);
-});
-
-yesBtn.addEventListener("click",()=>{
-  music.play();
-  document.body.innerHTML=`
-    <div style="min-height:100vh; background:linear-gradient(135deg, #ffb6d5, #ffe3f0); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px; color:#ff4f8b;">
-      <h1 style="font-family:'Pacifico', cursive; font-size:3.2em;">It’s a YES 💖</h1>
-      <img src="https://media.giphy.com/media/l0MYyDa8S9ghzNebm/giphy.gif" alt="Cute Love Gif">
-      <div class="letter">
-        <p>I just want to say something simple — You’ve been there for me whenever I felt low, and I know it hasn’t always been easy. We’ve had our moments, we’ve fought, and yet we always found our way back to being friends. Through all of that, what started to matter most to me was <strong>you</strong> — how you’re doing, how you’re feeling, and whether you’re okay.</p>
-        <p>I know neither of us is in a place to fall in love right now, and that’s completely okay. This isn’t about labels or rushing anything. It’s about being honest, showing I care, and being there for each other in the small ways that mean the most.</p>
-        <p>I don’t want this to affect our friendship at all. I truly value what we have, and the only thing I can promise is to always try to be emotionally present — to listen, to understand, and to never be the reason you feel worse on a hard day.</p>
-        <p>And I know you don’t really do dates… but maybe we could start small — a cozy dinner sometime, no expectations, and if it ever feels right, maybe even a little Goa trip someday. Just a gentle thought, one that makes me smile 💕</p>
-      </div>
+        <div id="reveal" class="hidden">
+            <img id="myPhoto" src="your-photo.jpg" alt="Us" />
+            <p id="note"></p>
+        </div>
     </div>
-  `;
-});
 
-// Floating hearts
-setInterval(()=>{
-  const heart=document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerText="💖";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=Math.random()*20+15+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),7000);
-},500);
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
+body {
+    background: #ffe6f2;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+    padding: 50px;
+    color: #3a003e;
+}
+
+.container {
+    background: #fff0f7;
+    border: 3px solid #ffb3d9;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.music {
+    margin: 20px 0;
+}
+
+button {
+    background: #ff80bf;
+    border: none;
+    padding: 12px 18px;
+    font-size: 1em;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+#reveal img {
+    width: 90%;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 2px solid #ff99cc;
+}
+
+#note {
+    font-size: 1.1em;
+    margin-top: 15px;
+    font-weight: bold;
+}
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const revealDiv = document.getElementById("reveal");
+const notePara = document.getElementById("note");
+
+yesBtn.addEventListener("click", () => {
+    revealDiv.classList.remove("hidden");
+    notePara.innerText = "I promise to always be there for you — even on days when life feels heavy. 💛 Thank you for being YOU!";
+});
+
+noBtn.addEventListener("click", () => {
+    alert("😄 Haha okay that’s too honest! But I still ❤️ you!");
+});
