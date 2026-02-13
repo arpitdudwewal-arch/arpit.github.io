@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>You're Never Alone 💖</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff6a88, #ff99ac);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/* Intro message */
+.intro {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 25px 20px;
+    margin: 20px auto 10px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 1s ease;
+}
+
+h1 { font-size: 28px; margin-bottom: 12px; }
+p { font-size: 17px; line-height: 1.5; margin: 8px 0; }
+
+/* Container for buttons and reveal */
+.container {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 25px 20px;
+    margin: 15px auto 30px auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.buttons {
+    margin-top: 15px;
+    position: relative;
+    height: 60px;
+}
+
+button {
+    padding: 12px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    position: relative;
+    user-select: none;
+}
+
+#yesBtn { background: #ff4e91; color: #fff; }
+#yesBtn:hover { transform: scale(1.1); box-shadow: 0 0 15px #ff77a9, 0 0 25px #ff77a9; }
+
+#noBtn {
+    background: #fff; color: #ff4e91;
+    position: absolute; top: 0; left: 120px;
+}
+
+#reveal {
+    margin-top: 20px;
+    display: none; /* hidden by default */
+}
+
+#reveal img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    animation: zoomIn 1s ease;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+#note {
+    font-size: 17px;
+    line-height: 1.5;
+    text-align: left;
+    color: #fff;
+    white-space: pre-line;
+}
+
+.floatElement {
+    position: fixed;
+    bottom: -20px;
+    animation: floatUp 7s linear infinite;
+    opacity: 0.9;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* Animations */
+@keyframes fadeIn { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+@keyframes zoomIn { from {transform: scale(0.5); opacity:0;} to {transform: scale(1); opacity:1;} }
+@keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+@keyframes shake { 0%,100% { transform: translateX(0);} 20%,60% { transform: translateX(-8px);} 40%,80% { transform: translateX(8px);} }
+
+@media (max-width: 600px) {
+    #noBtn { position: relative; top: auto; left: auto; display: inline-block; }
+    #yesBtn, #noBtn { display: inline-block; margin: 8px; }
+    #note { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background music -->
+<audio id="bgMusic" loop>
+    <source src="Music.mp3" type="audio/mp3">
+</audio>
+
+<!-- Intro message -->
+<div class="intro" id="introMsg">
+    <h1>🌸 Hey GG 🌸</h1>
+    <p>This Valentine… I just want you to know something.</p>
+    <p>You are NEVER alone. Not today. Not ever.</p>
+    <p>Because I’ll always be right here with you 🌻</p>
+</div>
+
+<!-- Container with buttons -->
+<div class="container">
+    <div class="buttons">
+        <p><b>Promise you'll always remember that?</b></p>
+        <button id="yesBtn">Yes, I Promise 💖</button>
+        <button id="noBtn">Not an option 🙈</button>
+    </div>
+
+    <!-- Reveal content -->
+    <div id="reveal">
+        <img src="WhatsApp%20Image%202026-02-11%20at%2010.52.52%20PM.jpeg" alt="Our Photo">
+        <p id="note">
+GG… 🤍
+
+No matter what life throws at you,  
+I promise to stand beside you —  
+to support you, laugh with you, protect your smile,  
+and remind you how special you are.
+
+I’m not sure about you, but in my heart I truly feel like I share something special with you — a bond that isn’t loud, but real.
+
+We’ve had our ups and downs, moments of distance, and yet somehow… we always found our way back.
+
+You were there for me when I was at my lowest.  
+And I, like a foolish person, let my mood dictate my actions and created distance.  
+You got irritated, but you still handled it quietly, and I see that now. I’m truly grateful for you.
+
+I wanted to say something honestly — but gently.
+
+Our friendship means a lot to me.  
+We work together, we share space, and I would never want to make that uncomfortable or awkward.  
+At the same time, I care about you deeply as a friend, and I hope you always know you don’t have to face life’s struggles alone.
+
+Life hasn’t been easy for you lately, and I notice the weight you carry silently.  
+I may not always have the perfect words, but I will always be here — ready to listen, support, or just sit beside you in silence when you need it.
+
+I value you more than I probably show sometimes.  
+I like you a lot — as a friend, sincerely and truly.  
+I would never want to hurt, pressure, or complicate what we have.  
+Our friendship matters too much to me.
+
+There might be days when I go quiet or seem distant,  
+but I hope you’ll know I’m still here, quietly rooting for you, ready whenever you need me.
+
+And GG… please take a break from life sometime.  
+One day, when things calm down, let’s escape on a vacay 🌊☀️  
+No pressure, no labels — just a few days of peace, laughter, and memories.  
+It might just become one of our most unforgettable trips.
+
+You're not alone. You never will be. 💕
+        </p>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const reveal = document.getElementById("reveal");
+const bgMusic = document.getElementById("bgMusic");
+const introMsg = document.getElementById("introMsg");
+const container = document.querySelector(".container");
+
+let noHoverCount = 0;
+
+// Make "No" button move
+noBtn.addEventListener("mouseover", () => {
+    noHoverCount++;
+    noBtn.style.animation = "shake 0.3s";
+    setTimeout(() => {
+        noBtn.style.animation = "";
+        const containerRect = container.getBoundingClientRect();
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+        const maxX = containerRect.width - btnWidth - 20;
+        const maxY = containerRect.height - btnHeight - 20;
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+        noBtn.style.position = "absolute";
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+        if (noHoverCount === 7) alert("Come on, say Yes! 💖");
+        if (noHoverCount > 10) noHoverCount = 0;
+    }, 300);
+});
+
+// Show reveal content and hide intro
+yesBtn.addEventListener("click", () => {
+    introMsg.style.display = "none";  // Hide intro message
+    reveal.style.display = "block";
+    document.querySelector(".buttons").style.display = "none";
+    bgMusic.play().catch(e => console.log("Audio play failed:", e));
+});
+
+// Floating hearts and sunflowers
+setInterval(() => {
+    const element = document.createElement("div");
+    element.classList.add("floatElement");
+    const emojis = ["💖","🌻"];
+    element.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+    element.style.left = Math.random()*100 + "vw";
+    element.style.fontSize = (Math.random()*20+20) + "px";
+    document.body.appendChild(element);
+    setTimeout(() => element.remove(), 7000);
+}, 500);
+
+</script>
+</body>
+</html>
